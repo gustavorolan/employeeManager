@@ -1,4 +1,4 @@
-package com.ciss.employeeManager.service;
+package com.ciss.employeeManager.service.employee;
 
 import com.ciss.employeeManager.dto.response.EmployeeResponse;
 import com.ciss.employeeManager.model.EmployeeEntity;

@@ -1,7 +1,7 @@
 package com.ciss.employeeManager.controller;
 
 import com.ciss.employeeManager.dto.request.NewUserRequest;
-import com.ciss.employeeManager.service.NewUserService;
+import com.ciss.employeeManager.service.user.NewUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

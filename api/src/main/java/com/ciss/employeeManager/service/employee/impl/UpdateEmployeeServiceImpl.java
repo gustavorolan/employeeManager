@@ -1,10 +1,10 @@
-package com.ciss.employeeManager.service.impl;
+package com.ciss.employeeManager.service.employee.impl;
 
 import com.ciss.employeeManager.dto.request.UpdateEmployeeRequest;
 import com.ciss.employeeManager.model.EmployeeEntity;
 import com.ciss.employeeManager.repository.EmployeeRepository;
-import com.ciss.employeeManager.service.FindEmployeeService;
-import com.ciss.employeeManager.service.UpdateEmployeeService;
+import com.ciss.employeeManager.service.employee.FindEmployeeService;
+import com.ciss.employeeManager.service.employee.UpdateEmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class UpdateEmployeeServiceImpl implements UpdateEmployeeService {
     private final EmployeeRepository employeeRepository;
 
     @Override
-    public void put(UpdateEmployeeRequest request) {
+    public void update(UpdateEmployeeRequest request) {
         EmployeeEntity employee = findEmployeeService.getEntityById(request.getEmployeeId());
         EmployeeEntity employeeEdited = EmployeeEntity.builder()
                 .id(employee.getId())
@@ -27,6 +27,7 @@ public class UpdateEmployeeServiceImpl implements UpdateEmployeeService {
                 .surname(!Objects.equals(request.getSurname(), "") ? request.getSurname() : employee.getSurname())
                 .pisNumber(!Objects.equals(request.getPisNumber(), 0L) ? request.getPisNumber() : employee.getPisNumber())
                 .name(!Objects.equals(request.getName(), "") ? request.getName() : employee.getName())
+                .userAccountEntity(employee.getUserAccountEntity())
                 .build();
 
         employeeRepository.save(employeeEdited);

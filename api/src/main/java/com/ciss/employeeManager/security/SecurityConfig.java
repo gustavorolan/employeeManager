@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 import org.springframework.session.web.http.HttpSessionIdResolver;
 
@@ -27,7 +27,7 @@ public class SecurityConfig  {
 
 
     @Bean
-    public DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception{
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception{
         http
                 .csrf().disable()
                 .cors().and()

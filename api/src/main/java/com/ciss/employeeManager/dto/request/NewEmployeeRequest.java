@@ -28,6 +28,5 @@ public class NewEmployeeRequest {
     private String email;
 
     @NotNull
-    @Size(min = 9, max = 13, message = "Characters limit between 2 and 50")
     private Long pisNumber;
 }

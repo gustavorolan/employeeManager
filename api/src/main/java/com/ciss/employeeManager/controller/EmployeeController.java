@@ -3,9 +3,10 @@ package com.ciss.employeeManager.controller;
 import com.ciss.employeeManager.dto.request.NewEmployeeRequest;
 import com.ciss.employeeManager.dto.request.UpdateEmployeeRequest;
 import com.ciss.employeeManager.dto.response.EmployeeResponse;
-import com.ciss.employeeManager.service.FindEmployeeService;
-import com.ciss.employeeManager.service.NewEmployeeService;
-import com.ciss.employeeManager.service.UpdateEmployeeService;
+import com.ciss.employeeManager.service.employee.DeleteEmployeeService;
+import com.ciss.employeeManager.service.employee.FindEmployeeService;
+import com.ciss.employeeManager.service.employee.NewEmployeeService;
+import com.ciss.employeeManager.service.employee.UpdateEmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,8 @@ public class EmployeeController {
 
     private final FindEmployeeService findEmployeeService;
 
+    private final DeleteEmployeeService deleteEmployeeService;
+
     @PostMapping("/new")
     public ResponseEntity<Long> create(@RequestBody @Valid NewEmployeeRequest request){
         Long id = newEmployeeService.create(request);
@@ -32,8 +35,8 @@ public class EmployeeController {
 
 
     @PutMapping
-    public ResponseEntity<String> put(@RequestBody @Valid UpdateEmployeeRequest request){
-        updateEmployeeService.put(request);
+    public ResponseEntity<String> update(@RequestBody @Valid UpdateEmployeeRequest request){
+        updateEmployeeService.update(request);
         return ResponseEntity.ok().build();
     }
 
@@ -42,6 +45,12 @@ public class EmployeeController {
     public ResponseEntity<EmployeeResponse> getById(@PathVariable Long id){
         EmployeeResponse response = findEmployeeService.getResponseById(id);
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<EmployeeResponse> deleteById(@PathVariable Long id){
+        deleteEmployeeService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping

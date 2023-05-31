@@ -1,7 +1,7 @@
-package com.ciss.employeeManager.service;
+package com.ciss.employeeManager.service.employee;
 
 import com.ciss.employeeManager.dto.request.UpdateEmployeeRequest;
 
 public interface UpdateEmployeeService {
-    void put(UpdateEmployeeRequest request);
+    void update(UpdateEmployeeRequest request);
 }

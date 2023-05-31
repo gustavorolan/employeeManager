@@ -1,10 +1,10 @@
-package com.ciss.employeeManager.service.impl;
+package com.ciss.employeeManager.service.user.impl;
 
 import com.ciss.employeeManager.dto.request.NewUserRequest;
 import com.ciss.employeeManager.exception.UserAlreadyExistsException;
 import com.ciss.employeeManager.model.UserAccountEntity;
 import com.ciss.employeeManager.repository.UserAccountRepository;
-import com.ciss.employeeManager.service.NewUserVerifier;
+import com.ciss.employeeManager.service.user.NewUserVerifier;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

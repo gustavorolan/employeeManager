@@ -6,6 +6,7 @@ import com.ciss.employeeManager.model.EmployeeEntity;
 import com.ciss.employeeManager.model.UserAccountEntity;
 import com.ciss.employeeManager.repository.EmployeeRepository;
 import com.ciss.employeeManager.security.FindUserAuthenticatedService;
+import com.ciss.employeeManager.service.employee.impl.FindEmployeeServiceImpl;
 import com.ciss.employeeManager.utils.factory.EmployeeFactory;
 import com.ciss.employeeManager.utils.factory.UserAccountFactory;
 import org.junit.jupiter.api.Assertions;

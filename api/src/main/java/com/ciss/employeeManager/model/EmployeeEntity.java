@@ -29,7 +29,7 @@ public class EmployeeEntity {
     @Column(nullable = false)
     private Long pisNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "userId")
     private UserAccountEntity userAccountEntity;
 }

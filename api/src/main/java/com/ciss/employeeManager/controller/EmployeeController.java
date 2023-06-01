@@ -8,14 +8,15 @@ import com.ciss.employeeManager.service.employee.FindEmployeeService;
 import com.ciss.employeeManager.service.employee.NewEmployeeService;
 import com.ciss.employeeManager.service.employee.UpdateEmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RequestMapping("/employeeManager/v1/employee")
 @RestController
+@CrossOrigin
 @RequiredArgsConstructor
 public class EmployeeController {
 
@@ -53,9 +54,9 @@ public class EmployeeController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
-    public ResponseEntity<List<EmployeeResponse>> getEmployeesFromUser(){
-        List<EmployeeResponse> response = findEmployeeService.getEmployeesFromUser();
+    @GetMapping("/page/{page}")
+    public ResponseEntity<Page<EmployeeResponse>> getEmployeesFromUser(@PathVariable Integer page){
+        Page<EmployeeResponse> response = findEmployeeService.getEmployeesFromUser(page);
         return ResponseEntity.ok(response);
     }
 }

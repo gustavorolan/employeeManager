@@ -3,7 +3,9 @@ package com.ciss.employeeManager.mapper;
 import com.ciss.employeeManager.dto.request.NewEmployeeRequest;
 import com.ciss.employeeManager.dto.response.EmployeeResponse;
 import com.ciss.employeeManager.model.EmployeeEntity;
+import com.ciss.employeeManager.model.UserAccountEntity;
 import com.ciss.employeeManager.utils.factory.EmployeeFactory;
+import com.ciss.employeeManager.utils.factory.UserAccountFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,10 +22,11 @@ class EmployeeMapperTest {
 
     @Test
     void toEntity() {
-        EmployeeEntity expected = EmployeeFactory.getEntity();
+        UserAccountEntity userAccountEntity = UserAccountFactory.getEntityWithoutEmployee();
+        EmployeeEntity expected = EmployeeFactory.getEntity(userAccountEntity);
         expected.setId(null);
         NewEmployeeRequest newEmployeeRequest = EmployeeFactory.getNewEmployeeRequest();
-        EmployeeEntity result = employeeMapper.toEntity(newEmployeeRequest);
+        EmployeeEntity result = employeeMapper.toEntity(newEmployeeRequest,userAccountEntity);
         Assertions.assertEquals(expected, result);
     }
 

@@ -9,13 +9,16 @@ import com.ciss.employeeManager.repository.EmployeeRepository;
 import com.ciss.employeeManager.security.FindUserAuthenticatedService;
 import com.ciss.employeeManager.service.employee.FindEmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class FindEmployeeServiceImpl implements FindEmployeeService {
+
+    private final static Integer MAX_ELEMENTS_PER_PAGE = 10;
 
     private final EmployeeRepository employeeRepository;
 
@@ -30,16 +33,17 @@ public class FindEmployeeServiceImpl implements FindEmployeeService {
     }
 
     @Override
-    public EmployeeEntity getEntityById(Long id){
+    public EmployeeEntity getEntityById(Long id) {
         UserAccountEntity user = findUserAuthenticatedService.getUser();
         return employeeRepository.findByUserIdAndEmployeeId(user.getId(), id)
                 .orElseThrow(EmployeeNotFoundException::new);
     }
 
-    @Override
-    public List<EmployeeResponse> getEmployeesFromUser(){
+    public Page<EmployeeResponse> getEmployeesFromUser(Integer page) {
+        PageRequest pageRequest = PageRequest.of(page, MAX_ELEMENTS_PER_PAGE);
         UserAccountEntity user = findUserAuthenticatedService.getUser();
-        List<EmployeeEntity> employeeEntityList = employeeRepository.findByUserId(user.getId());
-        return employeeMapper.toResponse(employeeEntityList);
+        Page<EmployeeEntity> employeeEntityPage = employeeRepository
+                .findByUserId(user.getId(), pageRequest);
+        return employeeEntityPage.map(employeeMapper::toResponse);
     }
 }

@@ -2,13 +2,12 @@ package com.ciss.employeeManager.service.employee;
 
 import com.ciss.employeeManager.dto.response.EmployeeResponse;
 import com.ciss.employeeManager.model.EmployeeEntity;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface FindEmployeeService {
     EmployeeResponse getResponseById(Long id);
 
     EmployeeEntity getEntityById(Long id);
 
-    List<EmployeeResponse> getEmployeesFromUser();
+    Page<EmployeeResponse> getEmployeesFromUser(Integer page);
 }

@@ -1,6 +1,7 @@
 package com.ciss.employeeManager.utils.factory;
 
 import com.ciss.employeeManager.dto.request.NewEmployeeRequest;
+import com.ciss.employeeManager.dto.request.UpdateEmployeeRequest;
 import com.ciss.employeeManager.dto.response.EmployeeResponse;
 import com.ciss.employeeManager.model.EmployeeEntity;
 import com.ciss.employeeManager.model.UserAccountEntity;
@@ -47,6 +48,26 @@ public class EmployeeFactory {
                 .surname(surname)
                 .pisNumber(pisNumber)
                 .name(name)
+                .build();
+    }
+
+    public static UpdateEmployeeRequest getUpdateEmployeeRequest(){
+        return UpdateEmployeeRequest.builder()
+                .employeeId(id)
+                .email("new@email.com")
+                .surname("new surname")
+                .pisNumber(987456120L)
+                .name("newName")
+                .build();
+    }
+
+    public static EmployeeEntity getEntityUpdated(){
+        return EmployeeEntity.builder()
+                .id(id)
+                .email("new@email.com")
+                .surname("new surname")
+                .pisNumber(987456120L)
+                .name("newName")
                 .build();
     }
 }

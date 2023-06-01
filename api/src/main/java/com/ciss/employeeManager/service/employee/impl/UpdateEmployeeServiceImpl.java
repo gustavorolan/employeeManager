@@ -1,6 +1,7 @@
 package com.ciss.employeeManager.service.employee.impl;
 
 import com.ciss.employeeManager.dto.request.UpdateEmployeeRequest;
+import com.ciss.employeeManager.exception.UpdateNotAllowedException;
 import com.ciss.employeeManager.model.EmployeeEntity;
 import com.ciss.employeeManager.repository.EmployeeRepository;
 import com.ciss.employeeManager.service.employee.FindEmployeeService;
@@ -20,7 +21,11 @@ public class UpdateEmployeeServiceImpl implements UpdateEmployeeService {
 
     @Override
     public void update(UpdateEmployeeRequest request) {
+
+        verify(request);
+
         EmployeeEntity employee = findEmployeeService.getEntityById(request.getEmployeeId());
+
         EmployeeEntity employeeEdited = EmployeeEntity.builder()
                 .id(employee.getId())
                 .email(!Objects.equals(request.getEmail(), "") ? request.getEmail() : employee.getEmail())
@@ -31,5 +36,11 @@ public class UpdateEmployeeServiceImpl implements UpdateEmployeeService {
                 .build();
 
         employeeRepository.save(employeeEdited);
+    }
+
+    protected void verify(UpdateEmployeeRequest request) {
+        boolean isNameNotValid = request.getName().length() <= 2 && !request.getName().equals("");
+        boolean isSurnameNotValid = request.getSurname().length() <= 2 && !request.getSurname().equals("");
+        if (isNameNotValid || isSurnameNotValid) throw new UpdateNotAllowedException();
     }
 }

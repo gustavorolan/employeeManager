@@ -91,7 +91,7 @@ class FindEmployeeServiceImplTest {
     @Test
     void getEmployeesFromUser() {
         int page = 0;
-        PageRequest pageRequest = PageRequest.of(page, 10);
+        PageRequest pageRequest = PageRequest.of(page, 7);
         UserAccountEntity userAccountEntity = UserAccountFactory.getEntityWithoutEmployee();
         EmployeeEntity employeeEntity = EmployeeFactory.getEntity();
         EmployeeResponse employeeResponse = EmployeeFactory.getEmployeeResponse();

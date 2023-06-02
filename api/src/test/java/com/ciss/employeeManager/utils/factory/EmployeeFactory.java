@@ -44,6 +44,7 @@ public class EmployeeFactory {
 
     public static EmployeeResponse getEmployeeResponse(){
         return  EmployeeResponse.builder()
+                .id(id)
                 .email(email)
                 .surname(surname)
                 .pisNumber(pisNumber)

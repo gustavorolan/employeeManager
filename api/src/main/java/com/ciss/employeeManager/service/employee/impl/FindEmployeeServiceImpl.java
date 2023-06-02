@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class FindEmployeeServiceImpl implements FindEmployeeService {
 
-    private final static Integer MAX_ELEMENTS_PER_PAGE = 10;
+    private final static Integer MAX_ELEMENTS_PER_PAGE = 7;
 
     private final EmployeeRepository employeeRepository;
 

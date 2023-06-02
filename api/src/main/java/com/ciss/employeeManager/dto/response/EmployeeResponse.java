@@ -16,4 +16,6 @@ public class EmployeeResponse {
     private String email;
 
     private Long pisNumber;
+
+    private Long id;
 }

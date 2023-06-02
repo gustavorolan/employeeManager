@@ -16,8 +16,7 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(
             NotFoundRuntimeException.class
     )
-    public ResponseEntity<String> notFoundedHandler(NotFoundRuntimeException exception)
-    {
+    public ResponseEntity<String> notFoundedHandler(NotFoundRuntimeException exception) {
         return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 
@@ -35,7 +34,9 @@ public class ExceptionHandlerAdvice {
         String message = exception.getBindingResult().getAllErrors()
                 .stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(Collectors.toList()).toString();
+                .distinct()
+                .collect(Collectors.toList())
+                .toString();
         return new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
     }
 }

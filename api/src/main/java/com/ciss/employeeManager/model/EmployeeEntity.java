@@ -23,7 +23,7 @@ public class EmployeeEntity {
     @Column(nullable = false, length = 50)
     private String surname;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)

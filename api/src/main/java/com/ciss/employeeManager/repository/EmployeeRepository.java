@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
-    @Query("select emp from employee emp where emp.userAccountEntity.id = :userId")
+    @Query("select emp from employee emp where emp.userAccountEntity.id = :userId order by emp.id")
     Page<EmployeeEntity> findByUserId(
             @RequestParam("userId") Long userId, Pageable pageable
     );

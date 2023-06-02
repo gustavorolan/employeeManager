@@ -27,6 +27,7 @@ public class EmployeeMapper {
                 .email(employeeEntity.getEmail())
                 .pisNumber(employeeEntity.getPisNumber())
                 .name(employeeEntity.getName())
+                .id(employeeEntity.getId())
                 .build();
     }
 

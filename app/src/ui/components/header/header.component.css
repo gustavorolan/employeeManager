@@ -1,0 +1,34 @@
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 50px;
+  background-color: var(--color-zero);
+  top: 0;
+}
+
+.headerContainer div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  background-color: var(--color-zero);
+  top: 0;
+}
+
+.headerContainer img,
+.headerContainer button {
+  width: 80px;
+  height: 30px;
+}
+
+
+.headerContainer button {
+    border-radius: 20px;
+    background-color: var(--color-three);
+  }

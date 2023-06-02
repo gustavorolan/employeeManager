@@ -17,7 +17,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
+      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:create-drop}
 
   session:
     store-type: jdbc

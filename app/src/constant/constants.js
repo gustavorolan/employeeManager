@@ -5,3 +5,4 @@ export const TOAST_TIME = 2000;
 export const HAPPY_FACE = '☺';
 export const X_TOAST ='X'
 export const ERROR_REQUEST_MESSAGE_NULL_FIELD= "You must fill in all fields!"
+export const PASSWORD_INVALID= "Password does not match!"

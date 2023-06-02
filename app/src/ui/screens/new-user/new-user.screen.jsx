@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalUser } from "../../../contexts/user.context";
 import { useEmployeeManagerApi } from "../../../hooks/api";
 import "../login/login.screen.css";
+import { setToastWithTimout } from "../../../constant/functions";
+import { PASSWORD_INVALID, X_TOAST } from "../../../constant/constants";
 
 export const NewUser = ({ setToast }) => {
   const [, setUser] = useGlobalUser();
@@ -22,8 +24,11 @@ export const NewUser = ({ setToast }) => {
         const response = await getLogin({ email, password });
         setUser({ token: response.headers["x-auth-token"] });
         navigate("/menu");
+      } else {
+        setToastWithTimout(setToast, PASSWORD_INVALID, X_TOAST);
       }
     } catch (e) {
+      setToastWithTimout(setToast, e.response.data, X_TOAST);
       navigate("/newUser");
     }
   };

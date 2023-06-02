@@ -1,3 +1,11 @@
+Como rodar
+- Subir banco de dados local
+- Executar essa query no banco local https://github.com/gustavorolan/employeeManager/blob/e70096d8ece57ce24289067cb19524b863ac20c7/api/src/main/resources/data/schema-postgresql.sql
+- A aplicação está como create-drop, irá criar as tabelas automaticamente, mas irá deletar ao fechar a aplicação.
+- Executar api com as seguintes variáveis de ambiente:SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/suaBaseDeDados; SPRING_DATASOURCE_USERNAME=seuUsuario;SPRING_DATASOURCE_PASSWORD=suaSenha
+- Executar app com npm run install, após isso executar npm run start.
+
+
 Do projeto:
 Projeto tem o objetivo de efetuar um CRUD de funcionário
 
@@ -12,3 +20,6 @@ Das funcionalidades (Utilizando APIs):
 - Exclusão de um Funcionário
 - Atualização de um Funcionário
 - Listagem de um Funcionário
+
+Video:
+https://drive.google.com/file/d/1D8mOqkmvMQTBYA0arIp22znQPLF_ADxb/view?usp=sharing

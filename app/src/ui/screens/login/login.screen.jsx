@@ -23,7 +23,7 @@ export function Login({ setToast }) {
       navigate("/menu");
     } catch (e) {
       setToastWithTimout(setToast, e.response.data, X_TOAST);
-      navigate("/login");
+      navigate("/");
     }
   };
 

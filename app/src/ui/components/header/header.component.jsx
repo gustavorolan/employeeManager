@@ -10,7 +10,7 @@ export const HeaderManager = () => {
 
   const handleLogout = () => {
     setUser({});
-    navigate("/login");
+    navigate("/");
   };
 
   return (

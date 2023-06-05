@@ -6,7 +6,7 @@ import { RoutesProtection } from "./routes-protection.component";
 export const AllRoutes = ({ setToast }) => {
   return (
     <Routes>
-      <Route path="/login" element={<Login setToast={setToast} />} />
+      <Route path="/" element={<Login setToast={setToast} />} />
       <Route path="/newUser" element={<NewUser  setToast={setToast} />} />
       <Route path="/menu" element={<RoutesProtection setToast={setToast} />}>
         <Route path="/menu" element={<MenuScreen setToast={setToast} />} />
